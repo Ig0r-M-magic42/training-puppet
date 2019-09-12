@@ -31,8 +31,8 @@ RUN yum install -y puppetserver nano man htop
 RUN sed -i 's/2g/512m/g' /etc/sysconfig/puppetserver
 
 # Start puppet server (not tested yed)
-RUN systemctl start puppetserver
-RUN systemctl enable puppetserver
+#RUN systemctl start puppetserver
+#RUN systemctl enable puppetserver
 
 # Adding following lines to puppet config
 RUN  echo -e "[agent]\nserver = master.puppet.vm" >> /etc/puppetlabs/puppet/puppet.conf
