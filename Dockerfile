@@ -11,9 +11,9 @@ rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
 rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
-## named (dns server) service
-#RUN yum install -y bind bind-utils
-#RUN systemctl enable named.service
+## named (dns server) service, REQUIRED to run systemctl start
+RUN yum install -y bind bind-utils
+RUN systemctl enable named.service
 
 # Without this, init won't start the enabled services and exec'ing and starting
 # them reports "Failed to get D-Bus connection: Operation not permitted".
@@ -32,10 +32,9 @@ RUN sed -i 's/2g/512m/g' /etc/sysconfig/puppetserver
 
 # Start puppet server (not tested yed)
 RUN systemctl start puppetserver
-RUN systemctl start puppetserver
+RUN systemctl enable puppetserver
 
-# @todo add below to /etc/puppetlabs/puppet/puppet.conf
-# [agent]
-# server = master.puppet.vm
+# Adding following lines to puppet config
+RUN  echo -e "[agent]\nserver = master.puppet.vm" >> /etc/puppetlabs/puppet/puppet.conf
 # @todo create url master.puppet.vm
 # Carry on after this from 4:40 From https://www.udemy.com/course/fundamentals-of-puppet/learn/lecture/9158106#overview
