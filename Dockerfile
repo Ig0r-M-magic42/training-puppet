@@ -16,4 +16,7 @@ RUN echo -e "[agent]\nserver = puppet.docker" >> /etc/puppetlabs/puppet/puppet.c
 # Define hostname for network
 RUN echo -e "NETWORKING=yes\nHOSTNAME=puppet.docker" >> /etc/sysconfig/network
 
+# Start puppetserver
+CMD systemctl start puppetserver
+CMD systemctl enable puppetserver
 # Follow post docker-up steps in main README.md
