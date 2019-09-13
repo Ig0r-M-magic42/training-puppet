@@ -1,12 +1,13 @@
 version: '3'
 services:
-  master.puppet.vm:
-    build: .
-    ports:
-      - "8140:8140"
+  puppet.docker:
+    build:
+      context: .
     cap_add:
       - SYS_ADMIN
     security_opt:
       - seccomp:unconfined
+    ports:
+      - "80:80"
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
