@@ -5,7 +5,10 @@
 #### General commands
 ```bash
 # Rebuild service
- docker-rebuild # Then Follow Post Docker Setup
+ docker-rebuild
+# OR UP it
+# docker-compose -up -d
+
  # After this run below commands to enable puppet as systemctl has problems to be run inside container
 docker-startPuppet
 # SSH
@@ -18,7 +21,7 @@ docker-rebuild && docker-startPuppet && docker-ssh
 #### Post Docker Setup
 ```bash
 # Update hosts file
-echo -e "$(hostname -I)" puppet.docker >> /etc/hosts
+#echo -e "$(hostname -I)" puppet.docker >> /etc/hosts
 
 ```
 
