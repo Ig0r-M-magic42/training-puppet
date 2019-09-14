@@ -35,5 +35,5 @@ alias docker-rebuild='docker-compose build && docker-compose down && docker-comp
 alias docker-sshPuppetMaster='docker-compose run puppetmaster //bin/bash'
 alias docker-sshPuppetAgent='docker-compose run puppetagent //bin/bash'
 
-alias docker-puppetStart='docker-compose exec puppetmaster systemctl start puppetserver && docker-compose exec puppetmaster systemctl enable puppetserver'
+alias docker-puppetStart='docker-compose exec puppetmaster systemctl start puppetserver && docker-compose exec puppetmaster systemctl enable puppetserver && docker-compose exec puppetmaster systemctl status puppetserver'
 ```

@@ -16,6 +16,7 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 VOLUME /run /run/lock /tmp
 
 # Install anything. The service you want to start must be a SystemD service.
+# Also apparently required to be executed to be able to talk with other containers without updating /etc/hosts
 CMD ["/usr/sbin/init"]
 
 # ---------------------------
@@ -24,9 +25,7 @@ CMD ["/usr/sbin/init"]
 RUN rpm -Uvh http://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
 
 # yum installs
-RUN yum install yum-utils nano man puppet puppetserver facter git -y && \
-    yum-config-manager --enable centosplus >& /dev/null && \
-    yum clean all
+RUN yum install nano man puppet puppetserver facter git -y
 
 # Change min max mem to 512m for puppetserver
 RUN sed -i 's/2g/512m/g' /etc/sysconfig/puppetserver
