@@ -4,5 +4,3 @@ services:
     build: .
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    ports:
-      - "80:8140"

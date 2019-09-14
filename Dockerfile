@@ -16,7 +16,6 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 VOLUME /run /run/lock /tmp
 
 # Install anything. The service you want to start must be a SystemD service.
-
 CMD ["/usr/sbin/init"]
 
 # Now is where the fun begins
@@ -30,7 +29,16 @@ RUN yum install yum-utils nano man htop puppet puppetserver facter -y
 RUN sed -i 's/2g/512m/g' /etc/sysconfig/puppetserver
 
 # Adding following lines to puppet config
-RUN echo -e "\n[main]\ncertname = puppet.docker\nserver = puppet.docker\n[agent]\nserver = puppet.docker" >> /etc/puppetlabs/puppet/puppet.conf
+#RUN echo -e "\n[main]\ncertname = puppet.docker\nserver = puppet.docker\n[agent]\nserver = puppet.docker" >> /etc/puppetlabs/puppet/puppet.conf
+RUN echo -e "[agent]\nserver = puppet.docker" >> /etc/puppetlabs/puppet/puppet.conf
+
+# Adding puppet bin to the $PATH to use gem and apply new $PATH
+ENV PATH="/opt/puppetlabs/puppet/bin:${PATH}"
+RUN /bin/bash -c "source ~/.bash_profile"
+
+# Install r10k
+RUN gem install r10k
+
 # Define hostname for network
-RUN echo -e "NETWORKING=yes\nHOSTNAME=puppet.docker" >> /etc/sysconfig/network
+#RUN echo -e "NETWORKING=yes\nHOSTNAME=puppet.docker" >> /etc/sysconfig/network
 # END Follow post docker-up steps in main README.md
