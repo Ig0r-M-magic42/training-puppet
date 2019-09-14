@@ -20,8 +20,8 @@ docker-rebuild && docker-startPuppet && docker-ssh
 
 #### Post Docker Setup
 ```bash
-# Update hosts file
-#echo -e "$(hostname -I)" puppet.docker >> /etc/hosts
+# Deploy r10k
+r10k deploy environment -p
 
 ```
 
@@ -33,7 +33,10 @@ alias docker-stop='docker stop $(docker ps -a -q)'
 alias docker-rebuild='docker-compose build && docker-compose down && docker-compose up -d'
 ## If using docker-compose on widows to ssh use `docker-compose run centos7 //bin/bash` as explained in here https://stackoverflow.com/a/21907301/3904245
 alias docker-ssh='docker-compose run puppet.docker //bin/bash'
-## Alias to start and enable puppet server
-alias docker-startPuppet='docker-compose exec puppet.docker systemctl start puppetserver && docker-compose exec puppet.docker systemctl enable puppetserver'
+## Puppet related aliases
+alias docker-puppetStart='docker-compose exec puppet.docker systemctl start puppetserver && docker-compose exec puppet.docker systemctl enable puppetserver'
+alias docker-puppetStatus='docker-compose exec puppet.docker systemctl status puppetserver'
+alias docker-puppetRebuild='docker-rebuild && docker-puppetStart'
+
 ```
 

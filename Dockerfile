@@ -23,7 +23,7 @@ CMD ["/usr/sbin/init"]
 RUN rpm -Uvh http://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
 
 # yum installs
-RUN yum install yum-utils nano man htop puppet puppetserver facter -y
+RUN yum install yum-utils nano man htop puppet puppetserver facter git -y
 
 # Change min max mem to 512m for puppetserver
 RUN sed -i 's/2g/512m/g' /etc/sysconfig/puppetserver
@@ -38,7 +38,3 @@ RUN /bin/bash -c "source ~/.bash_profile"
 
 # Install r10k
 RUN gem install r10k
-
-# Define hostname for network
-#RUN echo -e "NETWORKING=yes\nHOSTNAME=puppet.docker" >> /etc/sysconfig/network
-# END Follow post docker-up steps in main README.md

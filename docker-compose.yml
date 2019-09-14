@@ -4,3 +4,4 @@ services:
     build: .
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - ./r10k:/etc/puppetlabs/r10k
