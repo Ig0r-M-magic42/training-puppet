@@ -24,7 +24,7 @@ CMD ["/usr/sbin/init"]
 RUN rpm -Uvh http://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
 
 # yum installs
-RUN yum install yum-utils nano man htop puppet puppetserver facter git -y && \
+RUN yum install yum-utils nano man puppet puppetserver facter git -y && \
     yum-config-manager --enable centosplus >& /dev/null && \
     yum clean all
 

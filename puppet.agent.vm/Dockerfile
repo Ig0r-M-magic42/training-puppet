@@ -3,7 +3,7 @@ FROM centos:7
 RUN rpm -Uvh http://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
 
 # yum installs
-RUN yum install yum-utils nano man htop puppet -y && \
+RUN yum install yum-utils nano man puppet -y && \
     yum-config-manager --enable centosplus >& /dev/null && \
     yum clean all
 
