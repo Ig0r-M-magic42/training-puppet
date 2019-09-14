@@ -1,0 +1,18 @@
+version: '3'
+services:
+  puppetmaster:
+    build: ./puppet.master.vm
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - ./puppet.master.vmr10k:/etc/puppetlabs/r10k
+    expose:
+      - 8140
+    networks:
+      - puppet
+  puppetagent:
+    build: ./puppet.agent.vm
+    networks:
+      - puppet
+
+networks:
+  puppet:
