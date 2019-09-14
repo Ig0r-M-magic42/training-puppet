@@ -31,9 +31,6 @@ RUN yum install yum-utils nano man htop puppet puppetserver facter git -y && \
 # Change min max mem to 512m for puppetserver
 RUN sed -i 's/2g/512m/g' /etc/sysconfig/puppetserver
 
-## Adding following lines to puppet config
-#RUN echo -e "[agent]\nserver = puppet.agent.vm" >> /etc/puppetlabs/puppet/puppet.conf
-
 # Adding puppet bin to the $PATH to use gem and apply new $PATH
 ENV PATH="/opt/puppetlabs/puppet/bin:${PATH}"
 
