@@ -4,15 +4,19 @@ services:
     build: ./puppet.master.vm
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - ./puppet.master.vmr10k:/etc/puppetlabs/r10k
+      - ./puppet.master.vm/r10k:/etc/puppetlabs/r10k
     expose:
       - 8140
     networks:
-      - puppet
+      puppet:
+        aliases:
+          - puppet.master.vm
   puppetagent:
     build: ./puppet.agent.vm
     networks:
-      - puppet
+      puppet:
+        aliases:
+          - puppet.agent.vm
 
 networks:
   puppet:

@@ -24,7 +24,7 @@ CMD ["/usr/sbin/init"]
 RUN rpm -Uvh http://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
 
 # yum installs
-RUN yum install yum-utils nano man htop puppet puppetserver facter git -y&& \
+RUN yum install yum-utils nano man htop puppet puppetserver facter git -y && \
     yum-config-manager --enable centosplus >& /dev/null && \
     yum clean all
 
@@ -36,12 +36,6 @@ RUN sed -i 's/2g/512m/g' /etc/sysconfig/puppetserver
 
 # Adding puppet bin to the $PATH to use gem and apply new $PATH
 ENV PATH="/opt/puppetlabs/puppet/bin:${PATH}"
-RUN /bin/bash -c "source ~/.bash_profile"
 
 # Install r10k
 RUN gem install r10k
-
-# @todo add script to start and enable puppet stuff
-#ADD ./startup.sh /opt/startup.sh
-#RUN sed -i 's/\r//g' /opt/startup.sh
-#CMD ["/bin/bash", "/opt/startup.sh"]

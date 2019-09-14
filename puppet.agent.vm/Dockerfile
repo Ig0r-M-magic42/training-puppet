@@ -1,5 +1,7 @@
 FROM centos:7
 
+RUN rpm -Uvh http://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
+
 # yum installs
 RUN yum install yum-utils nano man htop puppet -y && \
     yum-config-manager --enable centosplus >& /dev/null && \
@@ -11,4 +13,3 @@ RUN yum install yum-utils nano man htop puppet -y && \
 
 # Adding puppet bin to the $PATH to use gem and apply new $PATH
 ENV PATH="/opt/puppetlabs/puppet/bin:${PATH}"
-RUN /bin/bash -c "source ~/.bash_profile"
