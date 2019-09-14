@@ -2,3 +2,5 @@ version: '3'
 services:
   puppet.agent.vm:
     build: .
+    networks:
+      - puppet
