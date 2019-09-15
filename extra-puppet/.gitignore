@@ -1,0 +1,5 @@
+# Ignoring puppet stuff
+volumes/puppet
+volumes/puppetdb
+volumes/puppetdb-postgres
+volumes/serverdata
