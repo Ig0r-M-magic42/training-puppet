@@ -1,5 +1,6 @@
 version: '3'
-
+# From https://medium.com/swlh/install-puppet-server-on-docker-fe4a80cbe3be
+# Do not forget r10k by running `gem install r10k`
 services:
   puppet:
     hostname: puppet.${DOMAIN:-internal}
