@@ -1,7 +1,0 @@
----
-:cachedir: '/var/cache/r10k'
-
-:sources:
-  :my-org:
-    remote: 'https://github.com/Ig0r-M/training-puppet.git'
-    basedir: '/etc/puppetlabs/code/environments'
