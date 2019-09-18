@@ -7,5 +7,8 @@
 # Puppet
 ## Modules
 modules
+hiera.yaml
+environment.conf.rpmnew
+
 ## After r10k deploy
 .r10k-deploy.json
