@@ -30,12 +30,15 @@ Vagrant.configure("2") do |config|
 
     # Define master server in puppet config
     echo -e \"\n[agent]\nserver = master.puppet.vm\" >> /etc/puppetlabs/puppet/puppet.conf
+=begin
+    # Update .bash_profile PATH variable manually, run command and copy from below
+    source ~/.bash_profile && source ~/.bash_profile
 
-    # Update .bash_profile PATH variable manually, copy from below
-#     PATH=$PATH:/opt/puppetlabs/puppet/bin:$HOME/bin
+    PATH=$PATH:/opt/puppetlabs/puppet/bin:$HOME/bin
 
-    # Install r10k
-#     gem install r10k
+    # Then install r10k
+    gem install r10k
 
+=end
   "
 end
