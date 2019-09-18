@@ -8,4 +8,4 @@
 ## Modules
 modules
 ## After r10k deploy
-.r10k-json
+.r10k-deploy.json
