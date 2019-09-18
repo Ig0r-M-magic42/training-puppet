@@ -4,5 +4,8 @@
 # Vagrant
 .vagrant
 
-# ignore puppet files
+# Puppet
+## Modules
 modules
+## After r10k deploy
+.r10k-json
