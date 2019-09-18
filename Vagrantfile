@@ -4,7 +4,6 @@ MEMORY="2048"
 Vagrant.configure("2") do |config|
 
   config.vm.box = "bento/centos-7.6"
-  #config.vm.box = "ubuntu/xenial64"
   config.vm.hostname = "master.puppet.vm"
 
   config.vm.provider "virtualbox" do |v|
